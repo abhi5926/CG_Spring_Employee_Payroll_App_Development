@@ -1,36 +1,39 @@
 package com.example.SpringPayrollAppDevelopment.model;
 
+import com.example.SpringPayrollAppDevelopment.dto.EmployeePayrollDTO;
+import lombok.Data;
 import jakarta.persistence.*;
-import jdk.jfr.DataAmount;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Entity
-@DataAmount
-@Table(name = "Employee_Payroll")
+@Data
+@Table(name = "employee_payroll")
 public class EmployeePayroll {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
+    private int salary;
+    private String gender;
+    private LocalDate startDate;
+    private String note;
+    private String profilePic;
+    private List<String> department;
     private String name;
-    private long salary;
 
-    public EmployeePayroll(){}
 
-    public EmployeePayroll(String name,long salary){
-        this.name = name;
-        this.salary = salary;
-    }
-    public String getName(){
-        return name;
-    }
-    public long getSalary(){
-        return salary;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
-    public void setSalary(long salary){
-        this.salary = salary;
+    public EmployeePayroll() {}
+
+    public EmployeePayroll(int id, EmployeePayrollDTO employeePayroll) {
+        this.id=id;
+        this.name = employeePayroll.name;
+        this.salary = employeePayroll.salary;
+        this.gender=employeePayroll.gender;
+        this.startDate=employeePayroll.startDate;
+        this.note=employeePayroll.note;
+        this.profilePic=employeePayroll.profilePic;
+        this.department=employeePayroll.department;
     }
 }

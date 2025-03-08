@@ -11,4 +11,5 @@ SpringPayrollAppDevelopmentApplication {
 		SpringApplication.run(SpringPayrollAppDevelopmentApplication.class, args);
 	}
 
+
 }
